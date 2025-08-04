@@ -1,0 +1,64 @@
+AI Ethics Assignment
+Theme: Designing Responsible and Fair AI Systems 🌍⚖️
+
+Part 1: Theoretical Understanding
+Q1: Define Algorithmic Bias and Provide Two Examples
+Definition:
+Algorithmic bias refers to systematic and unfair discrimination embedded in AI systems, which often arises due to prejudices in the training data, model design, or deployment context. This bias leads to unfair treatment of certain individuals or groups.
+
+Examples:
+
+An AI hiring tool that favors male candidates because the training data reflected a historical imbalance where men were hired more often than women.
+
+Facial recognition systems that misidentify people with darker skin tones more frequently because of underrepresentation in the training dataset.
+
+Q2: Explain Transparency vs Explainability and Their Importance
+Transparency: The openness and accessibility of the AI system’s data, algorithms, and processes to stakeholders for inspection.
+
+Explainability: The ability of the AI system to provide understandable and interpretable reasons behind its outputs or decisions.
+
+Importance:
+Transparency builds trust by revealing how AI works and what data it uses. Explainability enables users, auditors, and developers to understand why specific decisions are made, which is crucial for accountability, debugging, and ethical oversight.
+
+Q3: How Does GDPR Impact AI Development in the EU?
+The General Data Protection Regulation (GDPR) imposes strict requirements on how personal data can be collected, processed, and stored. It requires explicit user consent for data use, enforces data minimization, and grants users rights such as the right to access data and the right to an explanation of automated decisions. This pushes AI developers to build systems that prioritize data privacy, transparency, and accountability.
+
+Ethical Principles Matching
+Principle	Definition
+A) Justice	Fair distribution of AI benefits and risks
+B) Non-maleficence	Ensuring AI does not harm individuals or society
+C) Autonomy	Respecting users’ right to control their data and decisions
+D) Sustainability	Designing AI to be environmentally friendly
+
+Part 2: Case Study Analysis
+Case 1: Biased Hiring Tool (Amazon AI)
+Source of Bias: The training data was historically skewed towards male candidates, leading the AI to penalize female applicants.
+
+Proposed Fixes:
+
+Collect and train on a balanced dataset with equal gender representation.
+
+Remove gender-related features or proxies to prevent indirect bias.
+
+Employ fairness-aware algorithms and conduct regular bias audits.
+
+Fairness Metrics: Disparate Impact Ratio, Equal Opportunity Difference, Statistical Parity Difference.
+
+Case 2: Facial Recognition in Policing
+Ethical Risks:
+
+Increased false identifications can lead to wrongful arrests, disproportionately impacting minorities.
+
+Privacy invasion due to pervasive surveillance.
+
+Social injustice due to disproportionate harm to marginalized communities.
+
+Policy Recommendations:
+
+Enforce strict accuracy and bias thresholds before deployment.
+
+Use facial recognition only as a support tool, not as sole evidence.
+
+Ensure transparency with public reports and third-party audits.
+
+Engage communities for informed consent and oversight.
