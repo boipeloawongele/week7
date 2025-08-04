@@ -1,0 +1,52 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+from aif360.datasets import CompasDataset
+from aif360.metrics import ClassificationMetric
+from aif360.algorithms.preprocessing import Reweighing
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix
+
+# Load COMPAS dataset
+compas = CompasDataset()
+
+# Split dataset
+train, test = compas.split([0.7], shuffle=True)
+
+# Apply Reweighing to mitigate bias
+rw = Reweighing(unprivileged_groups=[{'race': 1}], privileged_groups=[{'race': 0}])
+rw.fit(train)
+train_transf = rw.transform(train)
+
+# Train Logistic Regression model
+X_train = train_transf.features
+y_train = train_transf.labels.ravel()
+model = LogisticRegression(solver='liblinear')
+model.fit(X_train, y_train)
+
+# Predictions on test data
+X_test = test.features
+y_test = test.labels.ravel()
+y_pred = model.predict(X_test)
+
+# Compute fairness metric: False Positive Rate Difference
+classified_metric = ClassificationMetric(test, test.copy(deepcopy=True),
+                                         unprivileged_groups=[{'race': 1}],
+                                         privileged_groups=[{'race': 0}])
+fpr_diff = classified_metric.false_positive_rate_difference()
+print(f"False Positive Rate Difference (Race): {fpr_diff:.4f}")
+
+# Visualize False Positive Rate by Race
+def false_positive_rate(y_true, y_pred):
+    tn, fp, fn, tp = confusion_matrix(y_true, y_pred).ravel()
+    return fp / (fp + tn)
+
+priv_idx = test.protected_attributes[:, compas.protected_attribute_names.index('race')] == 0
+unpriv_idx = ~priv_idx
+
+fpr_priv = false_positive_rate(y_test[priv_idx], y_pred[priv_idx])
+fpr_unpriv = false_positive_rate(y_test[unpriv_idx], y_pred[unpriv_idx])
+
+plt.bar(['Privileged (White)', 'Unprivileged (Non-White)'], [fpr_priv, fpr_unpriv], color=['blue', 'red'])
+plt.ylabel('False Positive Rate')
+plt.title('False Positive Rate by Race Group')
+plt.show()
