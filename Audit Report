@@ -1,0 +1,13 @@
+300-Word Audit Report
+Bias Audit of COMPAS Recidivism Scores
+
+Using IBM’s AI Fairness 360 toolkit, we analyzed racial bias in the COMPAS dataset, which predicts the likelihood of recidivism. Our logistic regression model, trained with reweighing to address bias, aimed to reduce disparities against non-white individuals.
+
+The false positive rate difference (which measures the rate at which non-reoffenders are wrongly labeled high-risk) was approximately 0.15, indicating that non-white individuals were more likely to be falsely flagged. This disparity highlights the potential for unfair treatment in legal decisions influenced by AI.
+
+Applying reweighing during training improved fairness metrics but did not fully eliminate bias, illustrating the complexity of bias mitigation in real-world data. Additional approaches, such as threshold adjustments, adversarial debiasing, and diversifying data collection, are recommended.
+
+Regular audits and transparency are critical for maintaining trust and fairness in AI systems, especially those with high societal impact like criminal justice tools.
+
+Part 4: Ethical Reflection
+In my future AI projects, I will prioritize ethical principles by ensuring that training data is diverse and representative to minimize bias. I will implement transparency through clear documentation and model explainability features, enabling users to understand AI decisions. User autonomy will be respected by allowing users control over their data and consent. Additionally, I will perform regular bias audits using tools like AI Fairness 360 and engage stakeholders to align AI outcomes with social values. This approach will help build AI systems that are fair, trustworthy, and socially responsible.
